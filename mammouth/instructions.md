@@ -1,5 +1,12 @@
 # Mammouth cluster instructions
 
+## Genreal Information
+
+The server is mp2.calculquebec.ca or mp2b.calculquebec.ca (same connexion, different route, just choose whichever you prefer)
+The maximum number of cores per node is 24
+By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.
+The group name for the cocolab if you registered with karim is 'def-kjerbi'
+
 ## Documentation
 
 Documentation can be found [here][mammoth doc] and is up to date.
@@ -33,7 +40,11 @@ That's it your python environment is now set up. You can test it by entering the
 ### How to write a submission job
 
 Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.
-More info on the options can be found [here][mammoth doc]
+You can also specify the number of nodes to use with --nodes and --ntasks-per-node
+For exemple i want to use 48 threads for my script, I add to my file:
+\#SBATCH --nodes=2
+\#SBATCH --ntasks-per-node=24
+More info on the options can be found [here][mammoth jobs]
 
 ### How to submit a job
 
@@ -45,4 +56,10 @@ Parameters inside the submission script can be overwritten with the command :
 
 sbatch --time=00:30:00 example_submission.sh
 
+### How to check on my jobs
+
+With the following command:
+squeue -u username
+
 [mammoth doc]: http://wiki.ccs.usherbrooke.ca/Mammouth-Mp2b#Documentation
+[mammoth jobs]: https://docs.computecanada.ca/wiki/Running_jobs
