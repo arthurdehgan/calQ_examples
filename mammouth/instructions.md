@@ -2,10 +2,10 @@
 
 ## Genreal Information
 
-The server is mp2.calculquebec.ca or mp2b.calculquebec.ca (same connexion, different route, just choose whichever you prefer)
-The maximum number of cores per node is 24
-By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.
-The group name for the cocolab if you registered with karim is 'def-kjerbi'
+The server is mp2.calculquebec.ca or mp2b.calculquebec.ca (same connexion, different route, just choose whichever you prefer)\n
+The maximum number of cores per node is 24\n
+By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.\n
+The group name for the cocolab if you registered with karim is 'def-kjerbi'\n
 
 ## Documentation
 
@@ -39,11 +39,11 @@ That's it your python environment is now set up. You can test it by entering the
 
 ### How to write a submission job
 
-Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.
-You can also specify the number of nodes to use with --nodes and --ntasks-per-node
-For exemple i want to use 48 threads for my script, I add to my file:
-\#SBATCH --nodes=2
-\#SBATCH --ntasks-per-node=24
+Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.\n
+You can also specify the number of nodes to use with --nodes and --ntasks-per-node\n
+For exemple i want to use 48 threads for my script, I add to my file:\n
+\#SBATCH --nodes=2 \n
+\#SBATCH --ntasks-per-node=24\n
 More info on the options can be found [here][mammoth jobs]
 
 ### How to submit a job
