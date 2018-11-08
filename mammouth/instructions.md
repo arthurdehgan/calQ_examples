@@ -1,4 +1,4 @@
-# Instrucions pour Mammouth
+# Mammouth cluster instructions
 
 ## Documentation
 
