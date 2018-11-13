@@ -141,6 +141,7 @@ To check the list of available modules:
 ```bash
 module available
 ```
+
 To check currently loaded modules.
 ```bash
 module list 

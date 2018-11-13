@@ -108,13 +108,57 @@ squeue -u username
 
 To check the list of available modules:
 ```bash
-module available
+module avail
 ```
+
 To check currently loaded modules.
 ```bash
 module list 
 ```
 
+Looking for a specific module ? use:
+```bash
+module spider module_name
+```
+
+### Information about storage
+
+Mammouth parallèle II
+
+* $HOME
+>Accessible from all nodes (including Ms2).
+Shared throughput of 105 MB/s, size of 100 GB/group.
+Backed up.
+Please use the $HOME_GROUP directory to share data with colleagues.
+* $PARALLEL_SCRATCH_MP2_WIPE_ON_...
+>There are two versions with different puring dates.
+Accessible from all nodes (but not from Ms2).
+Shared throughput of 10 GB/s, size of 1 TB/group.
+No backups.
+Lustre distributed file system.
+Please use the $PARALLEL_SCRATCH_GROUP_MP2_WIPE_ON_... directory to share data with colleagues.
+* $ARCHIVE
+>Accessible from all login nodes (including those of Ms2).
+Shared throughput of 80 MB/s, size of 1 TB/group.
+Backed up.
+For long-term storage.
+Please use the $ARCHIVE_GROUP directory to share data with colleagues.
+* $LSCRATCH
+>Local storage space on a node.
+Throughput of 120 MB/s, size of 820 GB.
+Temporary.
+* $PARALLEL_LOCAL_SCRATCH
+>Parallel storage shared between the nodes of a single task (uses local discs)
+Parallel filesystem (FhGFS) with compression (lz4)
+1.8TB times the number of nodes.
+Striping of 512 KB.
+Available on demand (define ENABLE_PARALLEL_LOCAL_SCRATCH=1 in your submit script).
+Temporary files for the duration of the computation. You must copy files to $HOME or $PARALLEL_SCRATCH_MP2_... before the job ends.
+* $RAMDISK
+>Local storage space on a node.
+Throughput of 1.8 GB/s, size lower than 32 GB.
+Temporary.
+
 
 [mammoth status]: http://serveurscq.computecanada.ca/services/mammoth
-[mammoth jobs]: https://docs.computecanada.ca/wiki/Running_jobs
+[mammoth doc]: https://wiki.ccs.usherbrooke.ca/Mammouth:Accueil
