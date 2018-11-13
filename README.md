@@ -29,7 +29,7 @@ Refer to the following tables to choose the cluster you want to use:
 
 ### Serveurs spécialisés
 | Hadès | Helios|
-|:--|:--|
+|:--|
 |serveur contenant des cartes graphiques|
 
 
