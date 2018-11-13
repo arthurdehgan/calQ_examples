@@ -2,39 +2,45 @@
 
 ## General Information
 
-The server is briaree.calculquebec.ca
-The maximum number of cores per node is 12
-The path for home folder is "/RQusagers/username"
+The server is briaree.calculquebec.ca  
+The maximum number of cores per node is 12.  
+The memory per core varies from 2GB up to 8GB per core.  
+Asking for more memory and more nodes will generally result in more wait time before the job is run.  
+
+The path for home folder is "/RQusagers/username" Use this path when saving files (results or logs).
+This storage is limited to 7.3TB for all users of a lab.
 
 ## Documentation
 
-Documentation can be found [here][briaree doc] but is not up to date.
+Documentation can be found [here][briaree doc].
 
 ### How to set up your python environment
 
-First, decide which version of python you are going to use (if you don't know what version to use go for python 3.7.0, it is retrocompatible with all python3 versions). List all python version available by running the command:
-
-```
-module spider python
-```
+First, decide which version of python you are going to use (if you don't know what version to use go for python 3.5.1, the latest version of python available on the cluster).
 
 Load the chosen python version with:
 
 ```
 module load python/x.y.z  
 ```
-(x, y and z corresponding to your python version eg. 3.7.0)
+(x, y and z corresponding to your python version eg. 3.5.1)
 
 Create a new python environment with the command:
 
 ```
-python -m venv "python_env"
+python3 -m venv "python_env"
 ```
+_Note that python3 is used, because when you load python the default version is the system's python 2.6.6 version._
 
 Activate the environment with:
 
 ```
 source $HOME/python_env/bin/activate
+```
+
+Update pip (optional):
+```
+pip install pip -U
 ```
 
 Install desired packages with:
@@ -54,6 +60,13 @@ For exemple i want to use 24 threads for my script, I change the node parameter:
 ```
 #PBS -l nodes=2:ppn=12
 ```
+
+If you need a large amount of memory, add the option:
+```
+#PBS -l nodes=10:m48G:ppn=12
+```
+Here, 10 nodes with each 48GB memory will be reserved (a total of 480GB of memory).
+
 More info on the options can be found [here][briaree doc]
 
 ### How to submit a job
@@ -74,12 +87,72 @@ Select the right queue according to your parameters:
 | hpcourte	| 48 h			| 5	| 171	| n/a	| n/a	| n/a	|  
 | hp		| 168 h (7 days)	| 5	| 171	| 2052	| 8	| n/a	|  
 
+longue, hpcourte and hp are limited access queues (you need to contact Calul Quebec to have access)
+
+To view available ressources, enter the command:
+```
+pbs_free :normal
+```
+
 ### How to check on my jobs
 
 With the following command:
 ```
 qstat -u username
 ```
+
+### Other usefull commands
+
+To check the list of available modules:
+```
+module available
+```
+To check currently loaded modules.
+```
+module list 
+```
+
+### Information about storage
+
+Most of the time only HOME storage will be enough, but in some cases you might want to load very large files, SCRATCH is the storage to use. Here is the list of available storage solutions on the server:  
+
+* $HOME (/RQusagers/username)
+>Individual space, different for each user.
+Read- and write-accessible for all nodes, by the user only (by default).
+Shared file system GPFS of 7.3 TB.
+Data persists.
+Regular backups.
+* $SCRATCH
+>Individual space, different for each user.
+Read- and write-accessible for all nodes by the user.
+Read-only access by group members.
+Shared file system GPFS of 219 TB.
+4 to 16 times faster than $HOME
+Data persists.
+No backups.
+* $LSCRATCH
+>Local storage space for each node a job uses.
+Temporary directory created for the job at the job's start, erased at the end.
+Local ext4 file system of 182 GB.
+No backups, please copy your results elsewhere before the job ends.
+* $PARALLEL_LSCRATCH
+>Distributed local storage shared between the nodes associated to a given job (uses local disks).
+Parallel filesystem between those nodes (FhGFS)
+The space available is the sum of all $LSCRATCH of those nodes.
+Available upon request. Add ENABLE_PARALLEL_LSCRATCH=1 in your submit script.
+Temporary files for the duration of the job. You must copy files to your $HOME or $SCRATCH before the job is over.
+* $RAMDISK
+>Local storage space for each node, in memory.
+Very fast.
+Size smaller than one half of the node's memory.
+Temporary directory created for the job at the job's start, erased at the end.
+No backups, please copy your results elsewhere before the job ends.
+* $PARALLEL_RAMDISK
+>Distributed local storage shared between the nodes associated to a given job (uses local disks).
+Parallel filesystem between those nodes (FhGFS)
+The space available is the sum of all $RAMDISK of those nodes.
+Available upon request. Add ENABLE_PARALLEL_RAMDISK=1 in your submit script.
+Temporary files for the duration of the job. You must copy files to your $HOME or $SCRATCH before the job is over.
 
 ### Usefull Links
 

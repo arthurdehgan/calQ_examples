@@ -5,7 +5,6 @@
 #PBS -q courte
 #PBS -N example_script
 
-module load foss/2015b
-module load Python/3.5.2
+module load python/3.5.1
 
 /home/username/path/to/python /home/username/path/to/script.py
