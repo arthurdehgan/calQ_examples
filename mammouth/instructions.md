@@ -13,33 +13,33 @@ Documentation can be found [here][mammoth doc] and is up to date.
 
 ### How to set up your python environment
 
-First, decide which version of python you are going to use (if you don't know what version to use go for python 3.7.0, it is retrocompatible with all python3 versions). List all python version available by running the command:
-
+First, decide which version of python you are going to use (if you don't know what version to use go for python 3.7.0, it is retrocompatible with all python3 versions). List all python version available:
 ```
 module spider python
 ```
 
-Load the chosen python version with:
-
+Load the chosen python version:
 ```
 module load python/x.y.z  
 ```
 (x, y and z corresponding to your python version eg. 3.7.0)
 
-Create a new python environment with the command:
-
+Create a new python environment:
 ```
 python -m venv "python_env"
 ```
 
-Activate the environment with:
-
+Activate the environment:
 ```
 source $HOME/python_env/bin/activate
 ```
 
-Install desired packages with:
+Update pip (optional):
+```
+pip install pip -U
+```
 
+Install desired packages:
 ```
 pip install package1 package2 package3
 ```
