@@ -40,7 +40,7 @@ scp -r data/* username@mp2b.calculquebec.ca:/home/username/data/
 # Will transfer all the files in the local data folder to my remote $HOME/data folder
 ```
 
-More info on the [official doc][mammoth ssh]
+More info on the [official doc][mammoth doc]
 
 ### How to set up your python environment
 

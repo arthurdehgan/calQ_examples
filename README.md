@@ -3,7 +3,7 @@
 Guillimin is going to close down. It is time to switch to a different server.
 
 ## List of servers
-* [Mammouth ou mp2](https://github.com/arthurdehgan/calQ_examples/blob/master/mammouth/instructions.md)
+* [Mammouth parallel II (mp2)](https://github.com/arthurdehgan/calQ_examples/blob/master/mammouth/instructions.md)
 * [Briaree](https://github.com/arthurdehgan/calQ_examples/blob/master/briaree/instructions.md)
 
 Refer to the following tables to choose the cluster you want to use:
