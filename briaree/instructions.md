@@ -14,6 +14,38 @@ This storage is limited to 7.3TB for all users of a lab.
 
 Documentation can be found [here][briaree doc].
 
+### How to connect to the login nodes
+
+Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.
+```
+ssh username@briaree.calculquebec.ca
+```
+_Note: you can use puTTY on windows to access the login nodes_
+
+### How to send data to the server
+
+Use ssh to transfer data on the server (see information about storage to know where to put your data).
+_Note: Use winSCP or firezilla or any ssh file transfer utility to transfer files from a windows machine._
+```bash
+scp my_file username@briaree.calculquebec.ca:/path/to/desires/folder/
+```
+
+To transfer from the server to your local machine:
+```bash
+scp username@briaree.calculquebec.ca:/path/to/file path/to/destination/folder/
+```
+
+examples:
+```bash
+scp username@briaree.calculquebec.ca:script/classif.py .
+# Will transfer the file classif.py from $HOME/script to the local folder.
+
+scp -r data/* username@briaree.calculquebec.ca:/RQusagers/username/data/ 
+# Will transfer all the files in the local data folder to my remote $HOME/data folder
+```
+
+More info on the [official doc][briaree ssh]
+
 ### How to set up your python environment
 
 First, decide which version of python you are going to use (if you don't know what version to use go for python 3.5.1, the latest version of python available on the cluster).
@@ -171,3 +203,4 @@ Temporary files for the duration of the job. You must copy files to your $HOME o
 [briaree status]: http://serveurscq.computecanada.ca/services/briaree
 [briaree doc]: https://wiki.calculquebec.ca/w/Ex%C3%A9cuter_une_t%C3%A2che/en
 [briaree storage]: https://wiki.calculquebec.ca/w/Utiliser_l%27espace_de_stockage/en
+[briaree ssh]: https://wiki.calculquebec.ca/w/Se_connecter_et_transf%C3%A9rer_des_fichiers/en
