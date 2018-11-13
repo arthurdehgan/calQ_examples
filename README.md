@@ -11,6 +11,7 @@ Refer to the following tables to choose the cluster you want to use:
 ### Mémoire requise
 
 | Peu de mémoire (≤ 24 Go par nœud) | Mémoire modérée | Grande mémoire (≥ 96 Go par nœud)|
+|:--				|:--					|:--|
 | Briarée (nœuds à 24 Go) 	| Briarée (nœuds à 48 Go)		| Briarée (nœuds à 96 Go) |
 | Colosse (nœuds à 24 Go) 	| Colosse (nœuds à 48 Go)		||
 | Guillimin (nœuds à 24 Go) 	| Guillimin (nœuds à 48 ou 72 Go)	| Guillimin (partition ScaleMP, 1 To)| 
