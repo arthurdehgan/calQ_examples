@@ -9,8 +9,7 @@ By default the memory allocated for a job is 256M asking for more memory will re
 
 ## Documentation
 
-Documentation can be found [here][mammoth doc] and is up to date.
-
+Documentation can be found [here][mammoth doc] and is up to date.  
 ### How to connect to the login nodes
 
 Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.
@@ -41,7 +40,7 @@ scp -r data/* username@mp2b.calculquebec.ca:/home/username/data/
 # Will transfer all the files in the local data folder to my remote $HOME/data folder
 ```
 
-More info on the [official doc][mammoth doc]
+More info on the [official doc][mammoth transfer]
 
 ### How to set up your python environment
 
@@ -122,6 +121,8 @@ Looking for a specific module ? use:
 module spider module_name
 ```
 
+More info [here][mammoth modules]
+
 ### Information about storage
 
 | Filesystem	| Default Quota	| Lustre-based?	| Backed up?	| Purged?	| Available by Default?	| Mounted on Compute Nodes?|
@@ -130,7 +131,8 @@ module spider module_name
 | Scratch Space	| 20 TB and 1M files per user		| Yes	| No	| Files older than 60 days are purged.	| Yes	| Yes|
 | Project Space	| 1 TB and 500k files per group[3]	| Yes	| Yes	| No	| Yes	| Yes|
 
-[mammoth status]: http://serveurscq.computecanada.ca/services/mammoth
+More info [here][mammoth storage]
+
 [mammoth doc]: http://wiki.ccs.usherbrooke.ca/Mammouth-Mp2b#Documentation
 [mammoth transfer]: https://docs.computecanada.ca/wiki/Transferring_data
 [mammoth jobs]: https://docs.computecanada.ca/wiki/Running_jobs
