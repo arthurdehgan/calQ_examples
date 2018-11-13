@@ -17,7 +17,7 @@ Documentation can be found [here][briaree doc].
 ### How to connect to the login nodes
 
 Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.
-```
+```bash
 ssh username@briaree.calculquebec.ca
 ```
 _Note: you can use puTTY on windows to access the login nodes_
@@ -52,32 +52,32 @@ First, decide which version of python you are going to use (if you don't know wh
 
 Load the chosen python version with:
 
-```
+```bash
 module load python/x.y.z  
 ```
 (x, y and z corresponding to your python version eg. 3.5.1)
 
 Create a new python environment with the command:
 
-```
+```bash
 python3 -m venv "python_env"
 ```
 _Note that python3 is used, because when you load python the default version is the system's python 2.6.6 version._
 
 Activate the environment with:
 
-```
+```bash
 source $HOME/python_env/bin/activate
 ```
 
 Update pip (optional):
-```
+```bash
 pip install pip -U
 ```
 
 Install desired packages with:
 
-```
+```bash
 pip install package1 package2 package3
 ```
 eg. pip install sklearn brainpipe
@@ -89,12 +89,12 @@ That's it your python environment is now set up. You can test it by entering the
 Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.  
 You can also specify the number of nodes to use with --nodes and --ntasks-per-node  
 For exemple i want to use 24 threads for my script, I change the node parameter:
-```
+```bash
 #PBS -l nodes=2:ppn=12
 ```
 
 If you need a large amount of memory, add the option:
-```
+```bash
 #PBS -l nodes=10:m48G:ppn=12
 ```
 Here, 10 nodes with each 48GB memory will be reserved (a total of 480GB of memory).
@@ -105,7 +105,7 @@ More info on the options can be found [here][briaree doc]
 
 You have to prepare a submission bash script with all the parameters and the modules and then run it with:
 
-```
+```bash
 qsub example_submission.sh
 ```
 Select the right queue according to your parameters:  
@@ -122,25 +122,25 @@ Select the right queue according to your parameters:
 longue, hpcourte and hp are limited access queues (you need to contact Calul Quebec to have access)
 
 To view available ressources, enter the command:
-```
+```bash
 pbs_free :normal
 ```
 
 ### How to check on my jobs
 
 With the following command:
-```
+```bash
 qstat -u username
 ```
 
 ### Other usefull commands
 
 To check the list of available modules:
-```
+```bash
 module available
 ```
 To check currently loaded modules.
-```
+```bash
 module list 
 ```
 
@@ -163,7 +163,7 @@ Read- and write-accessible for all nodes, by the user only (by default).
 Shared file system GPFS of 7.3 TB.
 Data persists.
 Regular backups.
-* $SCRATCH
+* $SCRATCH (/RQexec/kikuko)
 >Individual space, different for each user.
 Read- and write-accessible for all nodes by the user.
 Read-only access by group members.
@@ -171,7 +171,7 @@ Shared file system GPFS of 219 TB.
 4 to 16 times faster than $HOME
 Data persists.
 No backups.
-* $LSCRATCH
+* $LSCRATCH (/tmp)
 >Local storage space for each node a job uses.
 Temporary directory created for the job at the job's start, erased at the end.
 Local ext4 file system of 182 GB.
