@@ -1,15 +1,14 @@
-# Mammouth cluster instructions
+# Briaree cluster instructions
 
 ## General Information
 
 The server is briaree.calculquebec.ca
-The maximum number of cores per node is 24  
-By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.  
-The group name for the cocolab if you registered with karim is 'def-kjerbi'
+The maximum number of cores per node is 12
+The path for home folder is "/RQusagers/username"
 
 ## Documentation
 
-Documentation can be found [here][mammoth doc] and is up to date.
+Documentation can be found [here][briaree doc] but is not up to date.
 
 ### How to set up your python environment
 
@@ -51,33 +50,39 @@ That's it your python environment is now set up. You can test it by entering the
 
 Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.  
 You can also specify the number of nodes to use with --nodes and --ntasks-per-node  
-For exemple i want to use 48 threads for my script, I add to my file:  
+For exemple i want to use 24 threads for my script, I change the node parameter:
 ```
-#SBATCH --nodes=2  
-#SBATCH --ntasks-per-node=24  
+#PBS -l nodes=2:ppn=12
 ```
-More info on the options can be found [here][mammoth jobs]
+More info on the options can be found [here][briaree doc]
 
 ### How to submit a job
 
 You have to prepare a submission bash script with all the parameters and the modules and then run it with:
 
 ```
-sbatch example_submission.sh
+qsub example_submission.sh
 ```
-
-Parameters inside the submission script can be overwritten with the command :
-
-```
-sbatch --time=00:30:00 example_submission.sh
-```
+Select the right queue according to your parameters:  
+|Queue |Maximum execution time |Minimum number of nodes per job	|Maximum number of nodes per job |Maximum number of cores per user |Maximum number of jobs per user |Maximum number of cores for all jobs|
+|:--------------|:-------------:|:-----:|:-----:|:-----:|:-----:|:-----:|
+|test		|1 h		|	|	|1416	|	|	|
+|courte		|48 h		|	|4	|	|72	|	|
+|normale	|168 h (7 days)	|	|4	|1416	|36	|	|
+|longue		|336 h (14 days)|	|4	|180	|24	|720	|
+|hpcourte	|48 h		|5	|171	|	|	|	|
+|hp		|168 h (7 days)	|5	|171	|2052	|8	|	|
 
 ### How to check on my jobs
 
 With the following command:
 ```
-squeue -u username
+qstat -u username
 ```
 
-[mammoth doc]: http://wiki.ccs.usherbrooke.ca/Mammouth-Mp2b#Documentation
-[mammoth jobs]: https://docs.computecanada.ca/wiki/Running_jobs
+### Usefull Links
+
+[Server Status][briaree status]
+
+[briaree status]: http://serveurscq.computecanada.ca/services/briaree
+[briaree doc]: https://wiki.calculquebec.ca/w/Ex%C3%A9cuter_une_t%C3%A2che/en
