@@ -66,12 +66,12 @@ qsub example_submission.sh
 Select the right queue according to your parameters:  
 |Queue |Maximum execution time |Minimum number of nodes per job	|Maximum number of nodes per job |Maximum number of cores per user |Maximum number of jobs per user |Maximum number of cores for all jobs|
 |:--------------|:-------------:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|test		|1 h		|	|	|1416	|	|	|
-|courte		|48 h		|	|4	|	|72	|	|
-|normale	|168 h (7 days)	|	|4	|1416	|36	|	|
-|longue		|336 h (14 days)|	|4	|180	|24	|720	|
-|hpcourte	|48 h		|5	|171	|	|	|	|
-|hp		|168 h (7 days)	|5	|171	|2052	|8	|	|
+|test		|1 h		|1	|1	|1416	|n/a	|n/a	|
+|courte		|48 h		|1	|4	|n/a	|72	|n/a	|
+|normale	|168 h (7 days)	|1	|4	|1416	|36	|n/a	|
+|longue		|336 h (14 days)|1	|4	|180	|24	|720	|
+|hpcourte	|48 h		|5	|171	|n/a	|n/a	|n/a	|
+|hp		|168 h (7 days)	|5	|171	|2052	|8	|n/a	|
 
 ### How to check on my jobs
 
