@@ -114,7 +114,16 @@ module list
 
 ### Information about storage
 
-Most of the time only HOME storage will be enough, but in some cases you might want to load very large files, SCRATCH is the storage to use. Here is the list of available storage solutions on the server:  
+Most of the time only HOME storage will be enough, but in some cases you might want to load very large files, SCRATCH is the storage to use. 
+
+* Only use text format for files that are smaller than a few MB.
+* As far as possible, use local storage for temporary files.
+* If your program must search within a file, it is fastest to do it by reading it in completely before searching, or to use a RAM disk ($RAMDISK or /dev/shm).
+* Regularly clean up parallel file systems, because those systems are used for huge data collections.
+* If you no longer use certain files, compress them (you should group them before) and back them up (if possible).
+* If your needs are not well served by the available storage options please contact Calcul Québec's user support team
+
+Here is the list of available storage solutions on the server:  
 
 * $HOME (/RQusagers/username)
 >Individual space, different for each user.
@@ -157,6 +166,8 @@ Temporary files for the duration of the job. You must copy files to your $HOME o
 ### Usefull Links
 
 [Server Status][briaree status]
+[Storage Information][briaree storage]
 
 [briaree status]: http://serveurscq.computecanada.ca/services/briaree
 [briaree doc]: https://wiki.calculquebec.ca/w/Ex%C3%A9cuter_une_t%C3%A2che/en
+[briaree storage]: https://wiki.calculquebec.ca/w/Utiliser_l%27espace_de_stockage/en
