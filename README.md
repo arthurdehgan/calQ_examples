@@ -10,26 +10,26 @@ Refer to the following tables to choose the cluster you want to use:
 
 ### Mémoire requise
 
-| Peu de mémoire (≤ 24 Go par nœud) | Mémoire modérée | Grande mémoire (≥ 96 Go par nœud)|
+| Small amounts (≤ 24 GB per node) | Medium amounts | Large amounts (≥ 96 GB per node) |
 |:--				|:--					|:--|
-| Briarée (nœuds à 24 Go) 	| Briarée (nœuds à 48 Go)		| Briarée (nœuds à 96 Go) |
-| Colosse (nœuds à 24 Go) 	| Colosse (nœuds à 48 Go)		|Guillimin (partition ScaleMP, 1 To)|
-| Guillimin (nœuds à 24 Go) 	| Guillimin (nœuds à 48 ou 72 Go)	| Mp2 (nœuds à grande mémoire, 256 ou 512 Go)| 
+| Briarée (nodes with 24 GB) 	| Briarée (nodes with 48 GB)		| Briarée (nodes with 96 GB) |
+| Colosse (nodes with 24 GB) 	| Colosse (nodes with 48 GB)		|Guillimin (ScaleMP node, 1 TB)|
+| Guillimin (nodes with 24 GB) 	| Guillimin (nodes with 48 or 72 GB)	| Mp2 (large memory nodes, 256 or 512 GB)| 
 |				| Mp2					| |
 
 ### Type de réseautique
 
 | Peu de communications entre les cœurs	| Beaucoup de communications|
 |:--|:--|
-| Guillimin (queue sw) | Briarée |
-| Mp2 (queue qwork) | Colosse |
-||Guillimin (queues hb et lm)|
-||Mp2 (queue qfbb)|
+| Guillimin (sw queue) | Briarée |
+| Mp2 (qwork queue) | Colosse |
+||Guillimin (hb and lm queues)|
+||Mp2 (qfbb queue)|
 
 
 ### Serveurs spécialisés
 
 Hadès & Helios  
-serveur contenant des cartes graphiques
+Server containing GPUs
 
 

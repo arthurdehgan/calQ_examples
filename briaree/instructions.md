@@ -7,9 +7,6 @@ The maximum number of cores per node is 12.
 The memory per core varies from 2GB up to 8GB per core.  
 Asking for more memory and more nodes will generally result in more wait time before the job is run.  
 
-The path for home folder is "/RQusagers/username" Use this path when saving files (results or logs).
-This storage is limited to 7.3TB for all users of a lab.
-
 ## Documentation
 
 Documentation can be found [here][briaree doc].
@@ -27,7 +24,7 @@ _Note: you can use puTTY on windows to access the login nodes_
 Use ssh to transfer data on the server (see information about storage to know where to put your data).
 _Note: Use winSCP or firezilla or any ssh file transfer utility to transfer files from a windows machine._
 ```bash
-scp my_file username@briaree.calculquebec.ca:/path/to/desires/folder/
+scp my_file username@briaree.calculquebec.ca:/path/to/desired/folder/
 ```
 
 To transfer from the server to your local machine:
@@ -50,8 +47,7 @@ More info on the [official doc][briaree ssh]
 
 First, decide which version of python you are going to use (if you don't know what version to use go for python 3.5.1, the latest version of python available on the cluster).
 
-Load the chosen python version with:
-
+Load the chosen python version:
 ```bash
 module load python/x.y.z  
 ```
@@ -64,7 +60,7 @@ python3 -m venv "python_env"
 ```
 _Note that python3 is used, because when you load python the default version is the system's python 2.6.6 version._
 
-Activate the environment with:
+Activate the environment:
 
 ```bash
 source $HOME/python_env/bin/activate
@@ -75,7 +71,7 @@ Update pip (optional):
 pip install pip -U
 ```
 
-Install desired packages with:
+Install desired packages:
 
 ```bash
 pip install package1 package2 package3
@@ -87,28 +83,13 @@ That's it your python environment is now set up. You can test it by entering the
 ### How to write a submission job
 
 Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.  
-You can also specify the number of nodes to use with --nodes and --ntasks-per-node  
-For exemple i want to use 24 threads for my script, I change the node parameter:
+
+Use the default queue that will redirect your job to the correct queue according to the job duration:
 ```bash
-#PBS -l nodes=2:ppn=12
+#PBS -q soumet
 ```
 
-If you need a large amount of memory, add the option:
-```bash
-#PBS -l nodes=10:m48G:ppn=12
-```
-Here, 10 nodes with each 48GB memory will be reserved (a total of 480GB of memory).
-
-More info on the options can be found [here][briaree doc]
-
-### How to submit a job
-
-You have to prepare a submission bash script with all the parameters and the modules and then run it with:
-
-```bash
-qsub example_submission.sh
-```
-Select the right queue according to your parameters:  
+Or Select the right queue according to your parameters:  
 
 | Queue | Maximum execution time | Minimum number of nodes per job | Maximum number of nodes per job | Maximum number of cores per user | Maximum number of jobs per user | Maximum number of cores for all jobs |  
 | :------------ | :-------------------: | :---: | :---: | :---: | :---: | :---: |  
@@ -124,6 +105,27 @@ longue, hpcourte and hp are limited access queues (you need to contact Calul Que
 To view available ressources, enter the command:
 ```bash
 pbs_free :normal
+```
+You also specify the number of nodes to use with --nodes and --ntasks-per-node  
+For exemple i want to use 24 threads for my script, I change the node parameter:
+```bash
+#PBS -l nodes=2:ppn=12
+```
+
+If you need a large amount of memory, add the option:
+```bash
+#PBS -l nodes=10:m48G:ppn=12
+```
+Here, 10 nodes with each 48GB memory will be reserved (a total of 480GB of memory).
+
+More info on the options can be found [here][briaree jobs]
+
+### How to submit a job
+
+You have to prepare a submission bash script with all the parameters and the modules and then run it with:
+
+```bash
+qsub example_submission.sh
 ```
 
 ### How to check on my jobs
@@ -201,6 +203,7 @@ Temporary files for the duration of the job. You must copy files to your $HOME o
 [Storage Information][briaree storage]
 
 [briaree status]: http://serveurscq.computecanada.ca/services/briaree
-[briaree doc]: https://wiki.calculquebec.ca/w/Ex%C3%A9cuter_une_t%C3%A2che/en
+[briaree doc]: https://wiki.calculquebec.ca/
+[briaree jobs]: https://wiki.calculquebec.ca/w/Ex%C3%A9cuter_une_t%C3%A2che/en
 [briaree storage]: https://wiki.calculquebec.ca/w/Utiliser_l%27espace_de_stockage/en
 [briaree ssh]: https://wiki.calculquebec.ca/w/Se_connecter_et_transf%C3%A9rer_des_fichiers/en
