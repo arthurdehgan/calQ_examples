@@ -5,11 +5,13 @@
 The server is mp2.calculquebec.ca or mp2b.calculquebec.ca (same connexion, different route, just choose whichever you prefer).  
 The maximum number of cores per node is 24.  
 Storage in your home folder is limited to 50GB.  
+The maximum (RAM) memory per node you can ask for is 31GB.
 By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.  
 
 ## Documentation
 
 Documentation can be found [here][mammoth doc] and is up to date.  
+
 ### How to connect to the login nodes
 
 Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.
