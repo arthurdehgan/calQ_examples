@@ -174,6 +174,18 @@ To check currently loaded modules.
 module list
 ```
 
+### Using git commands on briaree
+
+On briaree git is not available by default. You have to load a module with the following command, or add it to your _.bashrc_ file to have it load each time you open your ssh connexion.
+```bash
+module load curl/7.54.0
+```
+
+to add the module loading to your _.bashrc_ file:
+```bash
+echo 'module load curl/7.54.0' >> $HOME:.bashrc
+```
+
 ### Information about storage
 
 Most of the time only HOME storage will be enough, but in some cases you might want to load very large files, SCRATCH is the storage to use.
