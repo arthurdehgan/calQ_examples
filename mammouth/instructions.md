@@ -29,22 +29,24 @@ With this option you will have to write commands to everytime you want to make c
 Use ssh to transfer data on the server (see information about storage to know where to put your data).
 _Note: Use winSCP or firezilla or any ssh file transfer utility to transfer files from a windows machine._
 ```bash
-scp my_file username@mp2b.calculquebec.ca:/path/to/desired/folder/
+rsync -v my_file username@mp2b.calculquebec.ca:/path/to/desired/folder/
 ```
 
 To transfer from the server to your local machine:
 ```bash
-scp username@mp2b.calculquebec.ca:/path/to/file path/to/destination/folder/
+rsync -v username@mp2b.calculquebec.ca:/path/to/file path/to/destination/folder/
 ```
 
 examples:
 ```bash
-scp username@mp2b.calculquebec.ca:script/classif.py .
+rsync -v username@mp2b.calculquebec.ca:script/classif.py .
 # Will transfer the file classif.py from $HOME/script to the local folder.
 
-scp -r data/* username@mp2b.calculquebec.ca:/home/username/data/
+rsync -vr data/* username@mp2b.calculquebec.ca:/home/username/data/
 # Will transfer all the files in the local data folder to my remote $HOME/data folder
 ```
+
+_Note: You can use scp instead of rsync for transfers but rsync is generally faster and more reliable than scp._
 
 #### Option 2: Mount a remote filesystem locally
 
