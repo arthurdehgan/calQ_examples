@@ -128,6 +128,24 @@ You have to prepare a submission bash script with all the parameters and the mod
 qsub example_submission.sh
 ```
 
+### How to cancel a job
+
+To delete a job you will have to know its ID, which can be obtained by checking your currently running jobs. (see next section)
+
+```bash
+qdel <jobid>
+```
+
+example:
+```bash
+qdel 7935435
+```
+
+You can also cancel all jobs you have launched:
+```bash
+qdel -u username
+```
+
 ### How to check on my jobs
 
 With the following command:
