@@ -99,6 +99,13 @@ You have to prepare a submission bash script with all the parameters and the mod
 sbatch example_submission.sh
 ```
 
+### How to delete/cancel a job
+
+```bash
+scancel <jobid>
+```
+The jobid of your jobs can be found by listing them (see How to check on my jobs)
+
 ### How to check on my jobs
 
 With the following command:
