@@ -2,15 +2,15 @@
 
 ## General Information
 
-The server is mp2.calculquebec.ca or mp2b.calculquebec.ca (same connexion, different route, just choose whichever you prefer).  
-The maximum number of cores per node is 24.  
-Storage in your home folder is limited to 50GB.  
+The server is mp2.calculquebec.ca or mp2b.calculquebec.ca (same connexion, different route, just choose whichever you prefer).
+The maximum number of cores per node is 24.
+Storage in your home folder is limited to 50GB.
 The maximum (RAM) memory per node you can ask for is 31GB.
-By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.  
+By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.
 
 ## Documentation
 
-Documentation can be found [here][mammoth doc] and is up to date.  
+Documentation can be found [here][mammoth doc] and is up to date.
 
 ### How to connect to the login nodes
 
@@ -22,25 +22,54 @@ _Note: you can use puTTY on windows to access the login nodes_
 
 ### How to send data to the server
 
+#### Option 1: Tranfer files from and to the server
+
+With this option you will have to write commands to everytime you want to make changes to your code or want to take some data from the server.
+
 Use ssh to transfer data on the server (see information about storage to know where to put your data).
 _Note: Use winSCP or firezilla or any ssh file transfer utility to transfer files from a windows machine._
 ```bash
-scp my_file username@mp2b.calculquebec.ca:/path/to/desired/folder/
+rsync -v my_file username@mp2b.calculquebec.ca:/path/to/desired/folder/
 ```
 
 To transfer from the server to your local machine:
 ```bash
-scp username@mp2b.calculquebec.ca:/path/to/file path/to/destination/folder/
+rsync -v username@mp2b.calculquebec.ca:/path/to/file path/to/destination/folder/
 ```
 
 examples:
 ```bash
-scp username@mp2b.calculquebec.ca:script/classif.py .
+rsync -v username@mp2b.calculquebec.ca:script/classif.py .
 # Will transfer the file classif.py from $HOME/script to the local folder.
 
-scp -r data/* username@mp2b.calculquebec.ca:/home/username/data/ 
+rsync -vr data/* username@mp2b.calculquebec.ca:/home/username/data/
 # Will transfer all the files in the local data folder to my remote $HOME/data folder
 ```
+
+_Note: You can use scp instead of rsync for transfers but rsync is generally faster and more reliable than scp._
+
+#### Option 2: Mount a remote filesystem locally
+
+With this option you can create a folder that is connected to the a remote folder from the mammoth server. You can edit files locally with your editor and copy/paste files from your file explorer directly to the remote server.
+
+First you will need to create a folder that will be the one conected to the server:
+```bash
+cd $HOME
+mkdir mammoth
+```
+
+Then connect the local folder to the remote folder of your choice:
+```bash
+sshfs username@mp2b.calculquebec.ca:/path/to/folder mammoth
+```
+
+example to set your remote $HOME folder to a mammoth folder in your locam $HOME folder:
+```bash
+cd && mkdir mammoth
+sshfs username@mp2b.calculquebec.ca:./ mammoth
+```
+
+That's it, now every file or folder you add/modify/remove in this local mammoth folder will be added/modified/removed from your remote folder on the mammoth server.
 
 More info on the [official doc][mammoth transfer]
 
@@ -53,7 +82,7 @@ module spider python
 
 Load the chosen python version:
 ```bash
-module load python/x.y.z  
+module load python/x.y.z
 ```
 (x, y and z corresponding to your python version eg. 3.7.0)
 
@@ -82,12 +111,12 @@ That's it your python environment is now set up. You can test it by entering the
 
 ### How to write a submission job
 
-Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.  
-You can also specify the number of nodes to use with --nodes and --ntasks-per-node  
-For exemple i want to use 48 threads for my script, I add to my file:  
+Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.
+You can also specify the number of nodes to use with --nodes and --ntasks-per-node
+For exemple i want to use 48 threads for my script, I add to my file:
 ```bash
-#SBATCH --nodes=2  
-#SBATCH --ntasks-per-node=24  
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=24
 ```
 More info on the options can be found [here][mammoth jobs]
 
@@ -122,7 +151,7 @@ module avail
 
 To check currently loaded modules.
 ```bash
-module list 
+module list
 ```
 
 Looking for a specific module ? use:
