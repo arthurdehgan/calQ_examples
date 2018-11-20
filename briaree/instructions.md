@@ -203,7 +203,7 @@ module load curl/7.54.0
 
 to add the module loading to your _.bashrc_ file:
 ```bash
-echo 'module load curl/7.54.0' >> $HOME:.bashrc
+echo 'module load curl/7.54.0' >> $HOME/.bashrc
 ```
 
 ### Information about storage
