@@ -2,7 +2,7 @@
 
 ## General Information
 
-The server is mp2.calculquebec.ca or mp2b.calculquebec.ca (same connexion, different route, just choose whichever you prefer).
+The server is mp2b.calculquebec.ca.
 The maximum number of cores per node is 24.
 Storage in your home folder is limited to 50GB.
 The maximum (RAM) memory per node you can ask for is 31GB.
