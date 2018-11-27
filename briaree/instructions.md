@@ -2,10 +2,10 @@
 
 ## General Information
 
-The server is briaree.calculquebec.ca
-The maximum number of cores per node is 12.
-The memory per core varies from 2GB up to 8GB per core.
-Asking for more memory and more nodes will generally result in more wait time before the job is run.
+The server is briaree.calculquebec.ca  
+The maximum number of cores per node is 12.  
+The memory per core varies from 2GB up to 8GB per core.  
+Asking for more memory and more nodes will generally result in more wait time before the job is run.  
 
 ## Documentation
 
