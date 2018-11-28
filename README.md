@@ -1,7 +1,8 @@
-# Calcul Quebec and Compute Canada setup tutorials and simple documentation
+## Calcul Quebec and Compute Canada setup tutorials and simple documentation
 
 Calcul Quebec (and compute Canada) is a group of computing clusters that is available for researchers in Quebec (Canada). It gives access to powerfull machines that can compute serial and parallel tasks faster than the average comsumer's computer.  
 
+click [here](https://github.com/arthurdehgan/calQ_examples/Multithreadinf_tutorial.ipynb) for our quick tutorial on how to parallelize your workflow.
 Here you will find a few tutorials that will teach you the basics to properly make use of the clusters.
 
 First you will have to create a compute canada and calcul quebec account. Then, follow one of the tutorials.
