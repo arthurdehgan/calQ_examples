@@ -11,13 +11,20 @@ Asking for more memory and more nodes will generally result in more wait time be
 
 Documentation can be found [here][briaree doc].
 
+## Tutorials 
+
 ### How to connect to the login nodes
 
-Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.
+Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.  
+Replace _username_ by your CalculQuebec login. Give your CalculQuebec when asked for your password.
 ```bash
+# Run locally
 ssh username@briaree.calculquebec.ca
 ```
 _Note: you can use puTTY on windows to access the login nodes_
+
+Once you entered the command, answered yes to the question and entered your password, you are connected on the remote server and any command entered after this one will be executed on the remote server.  
+**When _"Run on remote server"_ or _"Run locally:_ is indicated before a command check twice you are in the right terminal because some commands may cause problems.**
 
 ### How to send data to the server
 
@@ -28,11 +35,13 @@ With this option you will have to write commands to everytime you want to make c
 Use ssh to transfer data on the server (see information about storage to know where to put your data).
 _Note: Use winSCP or firezilla or any ssh file transfer utility to transfer files from a windows machine._
 ```bash
+# Run locally
 rsync -v my_file username@briaree.calculquebec.ca:/path/to/desired/folder/
 ```
 
 To transfer from the server to your local machine:
 ```bash
+# Run locally
 rsync -v username@briaree.calculquebec.ca:/path/to/file path/to/destination/folder/
 ```
 
@@ -53,12 +62,14 @@ With this option you can create a folder that is connected to the a remote folde
 
 First you will need to create a folder that will be the one conected to the server:
 ```bash
+# Run locally
 cd $HOME
 mkdir briaree
 ```
 
 Then connect the local folder to the remote folder of your choice:
 ```bash
+# Run locally
 sshfs username@briaree.calculquebec.ca:/path/to/folder briaree
 ```
 
@@ -78,6 +89,7 @@ First, decide which version of python you are going to use (if you don't know wh
 
 Load the chosen python version:
 ```bash
+# Run on remote server
 module load python/x.y.z
 ```
 (x, y and z corresponding to your python version eg. 3.5.1)
@@ -85,6 +97,7 @@ module load python/x.y.z
 Create a new python environment with the command:
 
 ```bash
+# Run on remote server
 python3 -m venv "python_env"
 ```
 _Note that python3 is used, because when you load python the default version is the system's python 2.6.6 version._
@@ -92,17 +105,20 @@ _Note that python3 is used, because when you load python the default version is 
 Activate the environment:
 
 ```bash
+# Run on remote server
 source $HOME/python_env/bin/activate
 ```
 
 Update pip (optional):
 ```bash
+# Run on remote server
 pip install pip -U
 ```
 
 Install desired packages:
 
 ```bash
+# Run on remote server
 pip install package1 package2 package3
 ```
 eg. pip install sklearn brainpipe
@@ -154,6 +170,7 @@ More info on the options can be found [here][briaree jobs]
 You have to prepare a submission bash script with all the parameters and the modules and then run it with:
 
 ```bash
+# Run on remote server
 qsub example_submission.sh
 ```
 
@@ -162,16 +179,19 @@ qsub example_submission.sh
 To delete a job you will have to know its ID, which can be obtained by checking your currently running jobs. (see next section)
 
 ```bash
+# Run on remote server
 qdel <jobid>
 ```
 
 example:
 ```bash
+# Run on remote server
 qdel 7935435
 ```
 
 You can also cancel all jobs you have launched:
 ```bash
+# Run on remote server
 qdel -u username
 ```
 
@@ -179,6 +199,7 @@ qdel -u username
 
 With the following command:
 ```bash
+# Run on remote server
 qstat -u username
 ```
 
@@ -186,11 +207,13 @@ qstat -u username
 
 To check the list of available modules:
 ```bash
+# Run on remote server
 module available
 ```
 
 To check currently loaded modules.
 ```bash
+# Run on remote server
 module list
 ```
 
@@ -198,11 +221,13 @@ module list
 
 On briaree git is not available by default. You have to load a module with the following command, or add it to your _.bashrc_ file to have it load each time you open your ssh connexion.
 ```bash
+# Run on remote server
 module load curl/7.54.0
 ```
 
 to add the module loading to your _.bashrc_ file:
 ```bash
+# Run on remote server
 echo 'module load curl/7.54.0' >> $HOME/.bashrc
 ```
 

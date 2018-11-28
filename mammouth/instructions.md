@@ -12,13 +12,20 @@ By default the memory allocated for a job is 256M asking for more memory will re
 
 Documentation can be found [here][mammoth doc] and is up to date.
 
+## Tutorials 
+
 ### How to connect to the login nodes
 
-Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.
+Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.  
+Replace _username_ by your CalculQuebec login. Give your calcul Canada password when prompted.
 ```bash
+# Run locally
 ssh username@mp2b.calculquebec.ca
 ```
 _Note: you can use puTTY on windows to access the login nodes_
+
+Once you entered the command, answered yes to the question and entered your password, you are connected on the remote server and any command entered after this one will be executed on the remote server.  
+**When _"Run on remote server"_ or _"Run locally:_ is indicated before a command check twice you are in the right terminal because some commands may cause problems.**
 
 ### How to send data to the server
 
@@ -29,11 +36,13 @@ With this option you will have to write commands to everytime you want to make c
 Use ssh to transfer data on the server (see information about storage to know where to put your data).
 _Note: Use winSCP or firezilla or any ssh file transfer utility to transfer files from a windows machine._
 ```bash
+# Run locally
 rsync -v my_file username@mp2b.calculquebec.ca:/path/to/desired/folder/
 ```
 
 To transfer from the server to your local machine:
 ```bash
+# Run locally
 rsync -v username@mp2b.calculquebec.ca:/path/to/file path/to/destination/folder/
 ```
 
@@ -54,17 +63,20 @@ With this option you can create a folder that is connected to the a remote folde
 
 First you will need to create a folder that will be the one conected to the server:
 ```bash
+# Run locally
 cd $HOME
 mkdir mammoth
 ```
 
 Then connect the local folder to the remote folder of your choice:
 ```bash
+# Run locally
 sshfs username@mp2b.calculquebec.ca:/path/to/folder mammoth
 ```
 
 example to set your remote $HOME folder to a mammoth folder in your locam $HOME folder:
 ```bash
+# Run locally
 cd && mkdir mammoth
 sshfs username@mp2b.calculquebec.ca:./ mammoth
 ```
@@ -77,32 +89,38 @@ More info on the [official doc][mammoth transfer]
 
 First, decide which version of python you are going to use (if you don't know what version to use go for python 3.7.0, it is retrocompatible with all python3 versions). List all python version available:
 ```bash
+# Run on remote server
 module spider python
 ```
 
 Load the chosen python version:
 ```bash
+# Run on remote server
 module load python/x.y.z
 ```
 (x, y and z corresponding to your python version eg. 3.7.0)
 
 Create a new python environment:
 ```bash
+# Run on remote server
 python -m venv "python_env"
 ```
 
 Activate the environment:
 ```bash
+# Run on remote server
 source $HOME/python_env/bin/activate
 ```
 
 Update pip (optional):
 ```bash
+# Run on remote server
 pip install pip -U
 ```
 
 Install desired packages:
 ```bash
+# Run on remote server
 pip install package1 package2 package3
 ```
 eg. pip install sklearn brainpipe
@@ -125,12 +143,14 @@ More info on the options can be found [here][mammoth jobs]
 You have to prepare a submission bash script with all the parameters and the modules and then run it with:
 
 ```bash
+# Run on remote server
 sbatch example_submission.sh
 ```
 
 ### How to delete/cancel a job
 
 ```bash
+# Run on remote server
 scancel <jobid>
 ```
 The jobid of your jobs can be found by listing them (see How to check on my jobs)
@@ -139,6 +159,7 @@ The jobid of your jobs can be found by listing them (see How to check on my jobs
 
 With the following command:
 ```bash
+# Run on remote server
 squeue -u username
 ```
 
@@ -146,16 +167,19 @@ squeue -u username
 
 To check the list of available modules:
 ```bash
+# Run on remote server
 module avail
 ```
 
 To check currently loaded modules.
 ```bash
+# Run on remote server
 module list
 ```
 
 Looking for a specific module ? use:
 ```bash
+# Run on remote server
 module spider module_name
 ```
 

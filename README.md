@@ -1,8 +1,12 @@
-# Calcul Quebec and Compute Canada setup tutorials
+# Calcul Quebec and Compute Canada setup tutorials and simple documentation
 
-Guillimin is going to close down. It is time to switch to a different server.
+Calcul Quebec (and compute Canada) is a group of computing clusters that is available for researchers in Quebec (Canada). It gives access to powerfull machines that can compute serial and parallel tasks faster than the average comsumer's computer.  
 
-## List of servers
+Here you will find a few tutorials that will teach you the basics to properly make use of the clusters.
+
+First you will have to create a compute canada and calcul quebec account. Then, follow one of the tutorials.
+
+## List of Tutorials
 * [Mammouth parallel II (mp2)](https://github.com/arthurdehgan/calQ_examples/blob/master/mammouth/instructions.md)
 * [Briaree](https://github.com/arthurdehgan/calQ_examples/blob/master/briaree/instructions.md)
 
