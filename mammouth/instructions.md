@@ -2,11 +2,11 @@
 
 ## General Information
 
-The server is mp2b.calculquebec.ca.
-The maximum number of cores per node is 24.
-Storage in your home folder is limited to 50GB.
-The maximum (RAM) memory per node you can ask for is 31GB.
-By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.
+The server is mp2b.calculquebec.ca.  
+The maximum number of cores per node is 24.  
+Storage in your home folder is limited to 50GB.  
+The maximum (RAM) memory per node you can ask for is 31GB.  
+By default the memory allocated for a job is 256M asking for more memory will result in more waiting time before the job starts. Same thing with node count and duration of the job.  
 
 ## Documentation
 
@@ -81,6 +81,7 @@ cd && mkdir mammoth
 sshfs username@mp2b.calculquebec.ca:./ mammoth
 ```
 
+Note: You will have to run the command again if you see your mp2 folder is empty (which can happen if connexion to the server is lost.  
 That's it, now every file or folder you add/modify/remove in this local mammoth folder will be added/modified/removed from your remote folder on the mammoth server.
 
 More info on the [official doc][mammoth transfer]
