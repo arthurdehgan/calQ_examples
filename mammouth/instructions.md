@@ -164,6 +164,12 @@ With the following command:
 squeue -u username
 ```
 
+```bash
+# Run on remote server
+seff job_id 
+```
+Where job_id is the id associated to your job (you cand find it using squeue) eg. 603113  
+
 ### Other usefull commands
 
 To check the list of available modules:
