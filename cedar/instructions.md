@@ -2,10 +2,10 @@
 
 ## General Information
 
-The server address is cedar.computecanada.ca or graham.computecanada.ca
-The maximum number of cores per node is 6 for cedar, 16 for graham.
-The memory per core varies from 32GB for cedar, 64 gor graham.
-Asking for more memory and more nodes will generally result in more wait time before the job is run.
+The server address is cedar.computecanada.ca or graham.computecanada.ca  
+The maximum number of cores per node is 6 for cedar, 16 for graham.  
+The memory per core varies from 32GB for cedar, 64 gor graham.  
+Asking for more memory and more nodes will generally result in more wait time before the job is run.  
 
 ## Documentation
 
@@ -15,24 +15,24 @@ Documentation can be found [here][computecanada doc].
 
 ### How to connect to the login nodes
 
-Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.
-Replace _username_ by your CalculQuebec login. Give your CalculQuebec when asked for your password.
+Use ssh to connect to the login nodes (do *not* run code on the login nodes), use bash.  
+Replace _username_ by your CalculQuebec login. Give your CalculQuebec when asked for your password.  
 ```bash
 # Run locally
 ssh username@cedar.computecanada.ca
 ```
 _Note: you can use puTTY on windows to access the login nodes_
 
-Once you entered the command, answered yes to the question and entered your password, you are connected on the remote server and any command entered after this one will be executed on the remote server.
-**When _"Run on remote server"_ or _"Run locally:_ is indicated before a command check twice you are in the right terminal because some commands may cause problems.**
+Once you entered the command, answered yes to the question and entered your password, you are connected on the remote server and any command entered after this one will be executed on the remote server.  
+**When _"Run on remote server"_ or _"Run locally:_ is indicated before a command check twice you are in the right terminal because some commands may cause problems.**  
 
 ### How to send data to the server
 
 #### Option 1: Tranfer files from and to the server
 
-With this option you will have to write commands to everytime you want to make changes to your code or want to take some data from the server.
+With this option you will have to write commands to everytime you want to make changes to your code or want to take some data from the server.  
 
-Use ssh to transfer data on the server (see information about storage to know where to put your data).
+Use ssh to transfer data on the server (see information about storage to know where to put your data).  
 _Note: Use winSCP or firezilla or any ssh file transfer utility to transfer files from a windows machine._
 ```bash
 # Run locally
@@ -58,7 +58,7 @@ _Note: You can use scp instead of rsync for transfers but rsync is generally fas
 
 #### Option 2: Mount a remote filesystem locally
 
-With this option you can create a folder that is connected to the a remote folder from the cedar server. You can edit files locally with your editor and copy/paste files from your file explorer directly to the remote server.
+With this option you can create a folder that is connected to the a remote folder from the cedar server. You can edit files locally with your editor and copy/paste files from your file explorer directly to the remote server.  
 
 First you will need to create a folder that will be the one conected to the server:
 ```bash
@@ -79,7 +79,7 @@ cd && mkdir cedar
 sshfs username@cedar.computecanada.ca:./ cedar
 ```
 
-That's it, now every file or folder you add/modify/remove in this local cedar folder will be added/modified/removed from your remote folder on the cedar server.
+That's it, now every file or folder you add/modify/remove in this local cedar folder will be added/modified/removed from your remote folder on the cedar server.  
 
 ### How to set up your python environment
 
@@ -120,19 +120,19 @@ pip install package1 package2 package3
 ```
 eg. pip install torch
 
-That's it your python environment is now set up. You can test it by entering the python command prompt and importing your packages. To deactivate the environment simply enter the "deactivate" command.
+That's it your python environment is now set up. You can test it by entering the python command prompt and importing your packages. To deactivate the environment simply enter the "deactivate" command.  
 
 ### How to write a submission job
 
-Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.
+Use the example_submission as a basis and change the python version, the path to the environment and the path to the script accordingly.  
 
-The first thing you should change is your account parameter otherwise, the script will not be accepted. You can check your account group name on your computec canada profile page. It should be of the form _abc-name_.
+The first thing you should change is your account parameter otherwise, the script will not be accepted. You can check your account group name on your computec canada profile page. It should be of the form _abc-name_.  
 ```bash
 #SBATCH --account=abc-name
 ```
 
-You need to specify the number of nodes to use with --cpus-per-task
-For exemple i want to use 24 threads for my script, I change the node parameter:
+You need to specify the number of nodes to use with --cpus-per-task  
+For exemple i want to use 6 threads for my script, I change the node parameter:
 ```bash
 #SBATCH --cpus-per-tasks=6  # 16 for graham
 ```
@@ -142,7 +142,7 @@ Specify the amount of memory you will need, asking for large numbers will genera
 #SBATCH --mem=8G  # max 32G for cedar, 64G for graham
 ```
 
-If you need a GPU:
+If you need a GPU: 
 ```bash
 #SBATCH --gres=gpu:1
 ```
@@ -203,4 +203,4 @@ module list
 
 Most of the time only $HOME storage will be enough, but in some cases you might want to load very large files, $SCRATCH is the storage to use.
 
-[cedar doc]: https://docs.computecanada.ca/wiki/
+[computecanada doc]: https://docs.computecanada.ca/wiki/
