@@ -1,4 +1,4 @@
-# Briaree cluster instructions
+# Cedar/Graham cluster instructions
 
 ## General Information
 
